@@ -97,6 +97,86 @@ public class WaveView extends View {
         path = new Path();
     }
 
+    public int getNumberOfWaves() {
+        return numberOfWaves;
+    }
+
+    public void setNumberOfWaves(int numberOfWaves) {
+        this.numberOfWaves = numberOfWaves;
+    }
+
+    public float getPhase() {
+        return phase;
+    }
+
+    public void setPhase(float phase) {
+        this.phase = phase;
+    }
+
+    public float getAmplitude() {
+        return amplitude;
+    }
+
+    public void setAmplitude(float amplitude) {
+        this.amplitude = amplitude;
+    }
+
+    public float getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(float frequency) {
+        this.frequency = frequency;
+    }
+
+    public float getPhaseShift() {
+        return phaseShift;
+    }
+
+    public void setPhaseShift(float phaseShift) {
+        this.phaseShift = phaseShift;
+    }
+
+    public float getDensity() {
+        return density;
+    }
+
+    public void setDensity(float density) {
+        this.density = density;
+    }
+
+    public float getPrimaryWaveLineWidth() {
+        return primaryWaveLineWidth;
+    }
+
+    public void setPrimaryWaveLineWidth(float primaryWaveLineWidth) {
+        this.primaryWaveLineWidth = primaryWaveLineWidth;
+    }
+
+    public float getSecondaryWaveLineWidth() {
+        return secondaryWaveLineWidth;
+    }
+
+    public void setSecondaryWaveLineWidth(float secondaryWaveLineWidth) {
+        this.secondaryWaveLineWidth = secondaryWaveLineWidth;
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public int getWaveColor() {
+        return waveColor;
+    }
+
+    public void setWaveColor(int waveColor) {
+        this.waveColor = waveColor;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(backgroundColor);
