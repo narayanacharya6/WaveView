@@ -9,8 +9,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        WaveView sine = (WaveView) findViewById(R.id.waveView);
-        sine.updateAmplitude(0.01f, true);
     }
 }
