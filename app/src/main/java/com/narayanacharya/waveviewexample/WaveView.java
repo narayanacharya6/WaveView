@@ -202,7 +202,7 @@ public class WaveView extends View {
                 float scaling = (float) (-Math.pow(1 / mid * (x - mid), 2) + 1);
 
                 float y = (float) (scaling * maxAmplitude * normedAmplitude
-                        * Math.sin(2 * Math.PI * (x / width) * frequency + phase) + halfHeight);
+                        * Math.sin(2 * Math.PI * (x / width) * frequency + phase * (i + 1)) + halfHeight);
 
                 if (x == 0) {
                     path.moveTo(x, y);
