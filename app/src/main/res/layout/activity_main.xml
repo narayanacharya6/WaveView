@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.narayanacharya.waveviewexample.MainActivity">
 
-    <com.narayanacharya.waveviewexample.WaveView
+    <com.narayanacharya.waveview.WaveView
         android:layout_gravity="center"
         android:id="@+id/waveView"
         android:layout_width="match_parent"

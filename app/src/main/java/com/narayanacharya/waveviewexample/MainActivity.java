@@ -1,8 +1,10 @@
 package com.narayanacharya.waveviewexample;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.narayanacharya.waveview.WaveView;
 
 public class MainActivity extends AppCompatActivity {
 

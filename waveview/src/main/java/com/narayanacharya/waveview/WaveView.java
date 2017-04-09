@@ -1,4 +1,4 @@
-package com.narayanacharya.waveviewexample;
+package com.narayanacharya.waveview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
