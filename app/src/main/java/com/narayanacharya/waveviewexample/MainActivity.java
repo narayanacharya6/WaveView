@@ -1,7 +1,10 @@
 package com.narayanacharya.waveviewexample;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.narayanacharya.waveview.WaveView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         WaveView sine = (WaveView) findViewById(R.id.waveView);
-        sine.updateAmplitude(0.01f, true);
+        sine.setBackgroundColor(Color.GRAY);
     }
 }
