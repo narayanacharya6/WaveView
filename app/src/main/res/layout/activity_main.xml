@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.narayanacharya.waveviewexample.MainActivity">
 
     <com.narayanacharya.waveview.WaveView
-        android:layout_gravity="center"
         android:id="@+id/waveView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:waveAmplitude="0.25"
+        app:waveBackgroundColor="@color/colorPrimary"
+        app:waveColor="@color/colorAccent"
+        app:waveDensity="5.0"
+        app:waveFrequency="2.0"
+        app:waveNumberOfWaves="5"
+        app:wavePhaseShift="-0.05"
+        app:wavePrimaryLineWidth="3.0"
+        app:waveSecondaryLineWidth="1.0" />
 
 </LinearLayout>

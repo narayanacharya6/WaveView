@@ -18,7 +18,28 @@ To use this you can add this to your layout file :
     android:layout_height="match_parent" />
 ```
 
-In order to customize the wave you can do so like this in your Activity file.
+In order to customize the wave you can:
+
+- Use XML Attributes
+
+```
+<com.narayanacharya.waveview.WaveView
+        android:id="@+id/waveView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:waveAmplitude="0.25"
+        app:waveBackgroundColor="@color/colorPrimary"
+        app:waveColor="@color/colorAccent"
+        app:waveDensity="5.0"
+        app:waveFrequency="2.0"
+        app:waveNumberOfWaves="5"
+        app:wavePhaseShift="-0.05"
+        app:wavePrimaryLineWidth="3.0"
+        app:waveSecondaryLineWidth="1.0" />
+```
+
+- Use a reference in your Activity
 
 ```
 WaveView sine = (WaveView) findViewById(R.id.waveView);
