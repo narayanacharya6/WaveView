@@ -15,5 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
         WaveView sine = (WaveView) findViewById(R.id.waveView);
         sine.setBackgroundColor(Color.GRAY);
+        sine.setWaveColor(Color.YELLOW);
     }
 }

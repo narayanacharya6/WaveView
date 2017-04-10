@@ -175,6 +175,7 @@ public class WaveView extends View {
 
     public void setWaveColor(int waveColor) {
         this.waveColor = waveColor;
+        this.paint.setColor(waveColor);
     }
 
     @Override
