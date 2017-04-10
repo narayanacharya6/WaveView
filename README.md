@@ -6,7 +6,7 @@ Simple Android library to draw sinusoidal waves.
 To add this library to your project, add this to your app level dependencies :
 
 ```
-compile 'com.narayanacharya:WaveView:0.9'
+compile 'com.narayanacharya:WaveView:0.9.1'
 ```
 
 To use this you can add this to your layout file :
