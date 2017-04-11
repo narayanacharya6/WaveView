@@ -25,6 +25,7 @@ public class WaveView extends View {
     private static final float defaultSecondaryLineWidth = 1.0f;
     private static final int defaultBackgroundColor = Color.BLACK;
     private static final int defaultWaveColor = Color.WHITE;
+    private static final float defaultXAxisPositionMultiplier = 0.5f;
 
     /**
      * Values used for drawing the wave. Initialized to default values.
@@ -39,6 +40,7 @@ public class WaveView extends View {
     private float secondaryWaveLineWidth;
     private int backgroundColor;
     private int waveColor;
+    private float xAxisPositionMultiplier;
 
     /**
      * Paint object for drawing the sine wave.
@@ -105,6 +107,9 @@ public class WaveView extends View {
             backgroundColor = typedArray.getColor(R.styleable.WaveView_waveBackgroundColor,
                     defaultBackgroundColor);
             waveColor = typedArray.getColor(R.styleable.WaveView_waveColor, defaultWaveColor);
+            xAxisPositionMultiplier = typedArray.getFloat(R.styleable.WaveView_waveXAxisPositionMultiplier,
+                    defaultXAxisPositionMultiplier);
+            boundXAxisPositionMultiplier();
         } else {
             this.numberOfWaves = defaultNumberOfWaves;
             this.frequency = defaultFrequency;
@@ -115,6 +120,7 @@ public class WaveView extends View {
             this.secondaryWaveLineWidth = defaultSecondaryLineWidth;
             this.backgroundColor = defaultBackgroundColor;
             this.waveColor = defaultWaveColor;
+            this.xAxisPositionMultiplier = defaultXAxisPositionMultiplier;
         }
 
         paint = new Paint();
@@ -123,6 +129,18 @@ public class WaveView extends View {
         paint.setAntiAlias(true);
 
         path = new Path();
+    }
+
+    /**
+     * Method to restrict the xAxisPositionMultiplier to a value between 0 and 1 so that the wave
+     * stays on screen.
+     */
+    private void boundXAxisPositionMultiplier() {
+        if(xAxisPositionMultiplier < 0) {
+            xAxisPositionMultiplier = 0;
+        } else if(xAxisPositionMultiplier > 1) {
+            xAxisPositionMultiplier = 1;
+        }
     }
 
     public int getNumberOfWaves() {
@@ -206,15 +224,23 @@ public class WaveView extends View {
         this.paint.setColor(waveColor);
     }
 
+    public float getWaveXAxisPositionMultiplier() {
+        return xAxisPositionMultiplier;
+    }
+
+    public void setWaveXAxisPositionMultiplier(float waveXAxisPositionMultiplier) {
+        this.xAxisPositionMultiplier = waveXAxisPositionMultiplier;
+        boundXAxisPositionMultiplier();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(backgroundColor);
 
         // Prepare common values
-        float halfHeight = canvas.getHeight() / 2;
+        float xAxisPosition = canvas.getHeight() * xAxisPositionMultiplier;
         float width = canvas.getWidth();
         float mid = canvas.getWidth() / 2;
-        float maxAmplitude = halfHeight - 4.0f;
 
         for (int i = 0; i < numberOfWaves; i++) {
             // Prepare variables for this wave
@@ -230,8 +256,10 @@ public class WaveView extends View {
                 // the view.
                 float scaling = (float) (-Math.pow(1 / mid * (x - mid), 2) + 1);
 
-                float y = (float) (scaling * maxAmplitude * normedAmplitude
-                        * Math.sin(2 * Math.PI * (x / width) * frequency + phase * (i + 1)) + halfHeight);
+                float y = (float) (scaling * amplitude * normedAmplitude
+                        * Math.sin(2 * Math.PI * (x / width) * frequency
+                        + phase * (i + 1))
+                        + xAxisPosition);
 
                 if (x == 0) {
                     path.moveTo(x, y);
