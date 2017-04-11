@@ -28,7 +28,7 @@ In order to customize the wave you can:
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:waveAmplitude="0.25"
+        app:waveAmplitude="10.25"
         app:waveBackgroundColor="@color/colorPrimary"
         app:waveColor="@color/colorAccent"
         app:waveDensity="5.0"
@@ -36,7 +36,8 @@ In order to customize the wave you can:
         app:waveNumberOfWaves="5"
         app:wavePhaseShift="-0.05"
         app:wavePrimaryLineWidth="3.0"
-        app:waveSecondaryLineWidth="1.0" />
+        app:waveSecondaryLineWidth="1.0"
+        app:waveXAxisPositionMultiplier="0.5" />
 ```
 
 - Use a reference in your Activity
@@ -52,6 +53,7 @@ sine.setPhaseShift(-0.05f);
 sine.setDensity(5.0f);
 sine.setPrimaryLineWidth(3.0f);
 sine.setSecondaryLineWidth(1.0f);
+sine.setWaveXAxisPositionMultiplier(0.5f)
 ```
 Values shown above are the default values.
 
