@@ -6,7 +6,7 @@ Simple Android library to draw sinusoidal waves.
 To add this library to your project, add this to your app level dependencies :
 
 ```
-compile 'com.narayanacharya:WaveView:0.9.2'
+compile 'com.narayanacharya:WaveView:0.9.3'
 ```
 
 To use this you can add this to your layout file :
@@ -56,6 +56,18 @@ sine.setSecondaryLineWidth(1.0f);
 sine.setWaveXAxisPositionMultiplier(0.5f)
 ```
 Values shown above are the default values.
+
+- Use the following methods to pause/play wave and check the current state of the wave (v0.9.3+)
+```
+// Check if the wave is paused or playing
+sine.isPlaying();
+
+// Pause the wave
+sine.pause();
+
+// Play the wave
+sine.play();
+```
 
 The original code was found [here](http://stackoverflow.com/a/33211722/5512274). Cleaned, modified and improved as per requirements though. 
 
