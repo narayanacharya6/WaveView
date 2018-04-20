@@ -11,6 +11,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class WaveView extends View {
 
     /**
@@ -51,6 +53,11 @@ public class WaveView extends View {
      * Path that defines the sine wave.
      */
     private Path path;
+
+    /**
+     * Holds state for whether the wave is in motion
+     */
+    private volatile AtomicBoolean isPlaying = new AtomicBoolean(true);
 
     public WaveView(Context context) {
         super(context);
@@ -136,9 +143,9 @@ public class WaveView extends View {
      * stays on screen.
      */
     private void boundXAxisPositionMultiplier() {
-        if(xAxisPositionMultiplier < 0) {
+        if (xAxisPositionMultiplier < 0) {
             xAxisPositionMultiplier = 0;
-        } else if(xAxisPositionMultiplier > 1) {
+        } else if (xAxisPositionMultiplier > 1) {
             xAxisPositionMultiplier = 1;
         }
     }
@@ -233,6 +240,19 @@ public class WaveView extends View {
         boundXAxisPositionMultiplier();
     }
 
+
+    public boolean isPlaying() {
+        return isPlaying.get();
+    }
+
+    public void play() {
+        this.isPlaying.set(true);
+    }
+
+    public void pause() {
+        this.isPlaying.set(false);
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(backgroundColor);
@@ -278,7 +298,10 @@ public class WaveView extends View {
             canvas.drawPath(path, paint);
         }
 
-        this.phase += phaseShift;
+        if (isPlaying.get()) {
+            this.phase += phaseShift;
+        }
+
         invalidate();
     }
 }
