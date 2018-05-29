@@ -18,16 +18,16 @@ public class WaveView extends View {
     /**
      * Default values for drawing the wave
      */
-    private static final int defaultNumberOfWaves = 3;
-    private static final float defaultFrequency = 2.0f;
-    private static final float defaultAmplitude = 0.15f;
-    private static final float defaultPhaseShift = -0.05f;
-    private static final float defaultDensity = 5.0f;
-    private static final float defaultPrimaryLineWidth = 3.0f;
-    private static final float defaultSecondaryLineWidth = 1.0f;
-    private static final int defaultBackgroundColor = Color.BLACK;
-    private static final int defaultWaveColor = Color.WHITE;
-    private static final float defaultXAxisPositionMultiplier = 0.5f;
+    private static final int DEFAULT_NUMBER_OF_WAVES = 3;
+    private static final float DEFAULT_FREQUENCY = 2.0f;
+    private static final float DEFAULT_AMPLITUDE = 0.15f;
+    private static final float DEFAULT_PHASE_SHIFT = -0.05f;
+    private static final float DEFAULT_DENSITY = 5.0f;
+    private static final float DEFAULT_PRIMARY_LINE_WIDTH = 3.0f;
+    private static final float DEFAULT_SECONDARY_LINE_WIDTH = 1.0f;
+    private static final int DEFAULT_BACKGROUND_COLOR = Color.BLACK;
+    private static final int DEFAULT_WAVE_COLOR = Color.WHITE;
+    private static final float DEFAULT_X_AXIS_POSITION_MULTIPLIER = 0.5f;
 
     /**
      * Values used for drawing the wave. Initialized to default values.
@@ -107,32 +107,32 @@ public class WaveView extends View {
     private void setUp(TypedArray typedArray) {
         if (typedArray != null) {
             numberOfWaves = typedArray.getInt(R.styleable.WaveView_waveNumberOfWaves,
-                    defaultNumberOfWaves);
-            frequency = typedArray.getFloat(R.styleable.WaveView_waveFrequency, defaultFrequency);
-            amplitude = typedArray.getFloat(R.styleable.WaveView_waveAmplitude, defaultAmplitude);
-            phaseShift = typedArray.getFloat(R.styleable.WaveView_wavePhaseShift, defaultPhaseShift);
-            density = typedArray.getFloat(R.styleable.WaveView_waveDensity, defaultDensity);
+                    DEFAULT_NUMBER_OF_WAVES);
+            frequency = typedArray.getFloat(R.styleable.WaveView_waveFrequency, DEFAULT_FREQUENCY);
+            amplitude = typedArray.getFloat(R.styleable.WaveView_waveAmplitude, DEFAULT_AMPLITUDE);
+            phaseShift = typedArray.getFloat(R.styleable.WaveView_wavePhaseShift, DEFAULT_PHASE_SHIFT);
+            density = typedArray.getFloat(R.styleable.WaveView_waveDensity, DEFAULT_DENSITY);
             primaryWaveLineWidth = typedArray.getFloat(R.styleable.WaveView_wavePrimaryLineWidth,
-                    defaultPrimaryLineWidth);
+                    DEFAULT_PRIMARY_LINE_WIDTH);
             secondaryWaveLineWidth = typedArray.getFloat(R.styleable.WaveView_waveSecondaryLineWidth,
-                    defaultSecondaryLineWidth);
+                    DEFAULT_SECONDARY_LINE_WIDTH);
             backgroundColor = typedArray.getColor(R.styleable.WaveView_waveBackgroundColor,
-                    defaultBackgroundColor);
-            waveColor = typedArray.getColor(R.styleable.WaveView_waveColor, defaultWaveColor);
+                    DEFAULT_BACKGROUND_COLOR);
+            waveColor = typedArray.getColor(R.styleable.WaveView_waveColor, DEFAULT_WAVE_COLOR);
             xAxisPositionMultiplier = typedArray.getFloat(R.styleable.WaveView_waveXAxisPositionMultiplier,
-                    defaultXAxisPositionMultiplier);
+                    DEFAULT_X_AXIS_POSITION_MULTIPLIER);
             boundXAxisPositionMultiplier();
         } else {
-            this.numberOfWaves = defaultNumberOfWaves;
-            this.frequency = defaultFrequency;
-            this.amplitude = defaultAmplitude;
-            this.phaseShift = defaultPhaseShift;
-            this.density = defaultDensity;
-            this.primaryWaveLineWidth = defaultPrimaryLineWidth;
-            this.secondaryWaveLineWidth = defaultSecondaryLineWidth;
-            this.backgroundColor = defaultBackgroundColor;
-            this.waveColor = defaultWaveColor;
-            this.xAxisPositionMultiplier = defaultXAxisPositionMultiplier;
+            this.numberOfWaves = DEFAULT_NUMBER_OF_WAVES;
+            this.frequency = DEFAULT_FREQUENCY;
+            this.amplitude = DEFAULT_AMPLITUDE;
+            this.phaseShift = DEFAULT_PHASE_SHIFT;
+            this.density = DEFAULT_DENSITY;
+            this.primaryWaveLineWidth = DEFAULT_PRIMARY_LINE_WIDTH;
+            this.secondaryWaveLineWidth = DEFAULT_SECONDARY_LINE_WIDTH;
+            this.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+            this.waveColor = DEFAULT_WAVE_COLOR;
+            this.xAxisPositionMultiplier = DEFAULT_X_AXIS_POSITION_MULTIPLIER;
         }
         initPaintPath();
     }
@@ -334,17 +334,17 @@ public class WaveView extends View {
         /**
          * Default is set at the beginning of Builder creation
          */
-        private int numberOfWaves = defaultNumberOfWaves;
+        private int numberOfWaves = DEFAULT_NUMBER_OF_WAVES;
         private float phase; // No Default value
-        private float amplitude = defaultAmplitude;
-        private float frequency = defaultFrequency;
-        private float phaseShift = defaultPhaseShift;
-        private float density = defaultDensity;
-        private float primaryWaveLineWidth = defaultPrimaryLineWidth;
-        private float secondaryWaveLineWidth = defaultSecondaryLineWidth;
-        private int backgroundColor = defaultBackgroundColor;
-        private int waveColor = defaultWaveColor;
-        private float xAxisPositionMultiplier = defaultXAxisPositionMultiplier;
+        private float amplitude = DEFAULT_AMPLITUDE;
+        private float frequency = DEFAULT_FREQUENCY;
+        private float phaseShift = DEFAULT_PHASE_SHIFT;
+        private float density = DEFAULT_DENSITY;
+        private float primaryWaveLineWidth = DEFAULT_PRIMARY_LINE_WIDTH;
+        private float secondaryWaveLineWidth = DEFAULT_SECONDARY_LINE_WIDTH;
+        private int backgroundColor = DEFAULT_BACKGROUND_COLOR;
+        private int waveColor = DEFAULT_WAVE_COLOR;
+        private float xAxisPositionMultiplier = DEFAULT_X_AXIS_POSITION_MULTIPLIER;
 
         public Builder(Context context) {
             if (context == null) {
