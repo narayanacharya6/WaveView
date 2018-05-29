@@ -59,6 +59,11 @@ public class WaveView extends View {
      */
     private volatile AtomicBoolean isPlaying = new AtomicBoolean(true);
 
+    WaveView(Context context, Builder builder) {
+        super(context);
+        setUpWithBuilder(builder);
+    }
+
     public WaveView(Context context) {
         super(context);
         setUp(null);
@@ -129,7 +134,25 @@ public class WaveView extends View {
             this.waveColor = defaultWaveColor;
             this.xAxisPositionMultiplier = defaultXAxisPositionMultiplier;
         }
+        initPaintPath();
+    }
 
+    private void setUpWithBuilder(Builder builder) {
+        this.numberOfWaves = builder.numberOfWaves;
+        this.frequency = builder.frequency;
+        this.amplitude = builder.amplitude;
+        this.phase = builder.phase;
+        this.phaseShift = builder.phaseShift;
+        this.density = builder.density;
+        this.primaryWaveLineWidth = builder.primaryWaveLineWidth;
+        this.secondaryWaveLineWidth = builder.secondaryWaveLineWidth;
+        this.backgroundColor = builder.backgroundColor;
+        this.waveColor = builder.waveColor;
+        this.xAxisPositionMultiplier = builder.xAxisPositionMultiplier;
+        initPaintPath();
+    }
+
+    private void initPaintPath() {
         paint = new Paint();
         paint.setColor(waveColor);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -303,5 +326,90 @@ public class WaveView extends View {
         }
 
         invalidate();
+    }
+
+    public static class Builder {
+        private final Context context;
+
+        /**
+         * Default is set at the beginning of Builder creation
+         */
+        private int numberOfWaves = defaultNumberOfWaves;
+        private float phase; // No Default value
+        private float amplitude = defaultAmplitude;
+        private float frequency = defaultFrequency;
+        private float phaseShift = defaultPhaseShift;
+        private float density = defaultDensity;
+        private float primaryWaveLineWidth = defaultPrimaryLineWidth;
+        private float secondaryWaveLineWidth = defaultSecondaryLineWidth;
+        private int backgroundColor = defaultBackgroundColor;
+        private int waveColor = defaultWaveColor;
+        private float xAxisPositionMultiplier = defaultXAxisPositionMultiplier;
+
+        public Builder(Context context) {
+            if (context == null) {
+                throw new IllegalArgumentException("Context cannot be null");
+            }
+            this.context = context;
+        }
+
+        public Builder numberOfWaves(int numberOfWaves) {
+            this.numberOfWaves = numberOfWaves;
+            return this;
+        }
+
+        public Builder phase(float phase) {
+            this.phase = phase;
+            return this;
+        }
+
+        public Builder waveAmplitude(float amplitude) {
+            this.amplitude = amplitude;
+            return this;
+        }
+
+        public Builder waveFrequency(float frequency) {
+            this.frequency = frequency;
+            return this;
+        }
+
+        public Builder wavePhaseShift(float phaseShift) {
+            this.phaseShift = phaseShift;
+            return this;
+        }
+
+        public Builder waveDensity(float density) {
+            this.density = density;
+            return this;
+        }
+
+        public Builder primaryWaveLineWidth(float primaryWaveLineWidth) {
+            this.primaryWaveLineWidth = primaryWaveLineWidth;
+            return this;
+        }
+
+        public Builder secondaryWaveLineWidth(float secondaryWaveLineWidth) {
+            this.secondaryWaveLineWidth = secondaryWaveLineWidth;
+            return this;
+        }
+
+        public Builder waveBackgroundColor(int backgroundColor) {
+            this.backgroundColor = backgroundColor;
+            return this;
+        }
+
+        public Builder waveColor(int waveColor) {
+            this.waveColor = waveColor;
+            return this;
+        }
+
+        public Builder xAxisPositionMultiplier(float xAxisPositionMultiplier) {
+            this.xAxisPositionMultiplier = xAxisPositionMultiplier;
+            return this;
+        }
+
+        public WaveView build() {
+            return new WaveView(context, this);
+        }
     }
 }
