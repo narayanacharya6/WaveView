@@ -11,5 +11,6 @@
         <attr name="waveBackgroundColor" format="color" />
         <attr name="waveColor" format="color" />
         <attr name="waveXAxisPositionMultiplier" format="float" />
+        <attr name="waveMaxAlpha" format="float"/>
     </declare-styleable>
 </resources>

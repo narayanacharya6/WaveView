@@ -28,6 +28,7 @@ public class WaveView extends View {
     private static final int DEFAULT_BACKGROUND_COLOR = Color.BLACK;
     private static final int DEFAULT_WAVE_COLOR = Color.WHITE;
     private static final float DEFAULT_X_AXIS_POSITION_MULTIPLIER = 0.5f;
+    private static final float DEFAULT_MAX_ALPHA = 1f;
 
     /**
      * Values used for drawing the wave. Initialized to default values.
@@ -43,6 +44,7 @@ public class WaveView extends View {
     private int backgroundColor;
     private int waveColor;
     private float xAxisPositionMultiplier;
+    private float maxAlpha;
 
     /**
      * Paint object for drawing the sine wave.
@@ -122,6 +124,7 @@ public class WaveView extends View {
             xAxisPositionMultiplier = typedArray.getFloat(R.styleable.WaveView_waveXAxisPositionMultiplier,
                     DEFAULT_X_AXIS_POSITION_MULTIPLIER);
             boundXAxisPositionMultiplier();
+            maxAlpha = typedArray.getFloat(R.styleable.WaveView_waveMaxAlpha, DEFAULT_MAX_ALPHA);
         } else {
             this.numberOfWaves = DEFAULT_NUMBER_OF_WAVES;
             this.frequency = DEFAULT_FREQUENCY;
@@ -133,6 +136,7 @@ public class WaveView extends View {
             this.backgroundColor = DEFAULT_BACKGROUND_COLOR;
             this.waveColor = DEFAULT_WAVE_COLOR;
             this.xAxisPositionMultiplier = DEFAULT_X_AXIS_POSITION_MULTIPLIER;
+            this.maxAlpha = DEFAULT_MAX_ALPHA;
         }
         initPaintPath();
     }
@@ -149,6 +153,7 @@ public class WaveView extends View {
         this.backgroundColor = builder.backgroundColor;
         this.waveColor = builder.waveColor;
         this.xAxisPositionMultiplier = builder.xAxisPositionMultiplier;
+        this.maxAlpha = builder.maxAlpha;
         initPaintPath();
     }
 
@@ -263,6 +268,14 @@ public class WaveView extends View {
         boundXAxisPositionMultiplier();
     }
 
+    public float getMaxAlpha() {
+        return maxAlpha;
+    }
+
+    public void setMaxAlpha(float maxAlpha) {
+        this.maxAlpha = maxAlpha;
+    }
+
 
     public boolean isPlaying() {
         return isPlaying.get();
@@ -315,7 +328,7 @@ public class WaveView extends View {
             path.close();
 
             // Set opacity for this wave fill
-            paint.setAlpha(i == 0 ? 255 : 255 / (i + 1));
+            paint.setAlpha(i == 0 ? Math.round(maxAlpha * 255) : Math.round(maxAlpha * 255) / (i + 1));
 
             // Draw wave
             canvas.drawPath(path, paint);
@@ -345,6 +358,7 @@ public class WaveView extends View {
         private int backgroundColor = DEFAULT_BACKGROUND_COLOR;
         private int waveColor = DEFAULT_WAVE_COLOR;
         private float xAxisPositionMultiplier = DEFAULT_X_AXIS_POSITION_MULTIPLIER;
+        private float maxAlpha = DEFAULT_MAX_ALPHA;
 
         public Builder(Context context) {
             if (context == null) {
@@ -405,6 +419,11 @@ public class WaveView extends View {
 
         public Builder xAxisPositionMultiplier(float xAxisPositionMultiplier) {
             this.xAxisPositionMultiplier = xAxisPositionMultiplier;
+            return this;
+        }
+
+        public Builder maxAlpha(float maxAlpha) {
+            this.maxAlpha = maxAlpha;
             return this;
         }
 

@@ -20,6 +20,7 @@
         app:wavePhaseShift="-0.05"
         app:wavePrimaryLineWidth="3.0"
         app:waveSecondaryLineWidth="1.0"
-        app:waveXAxisPositionMultiplier="0.9" />
+        app:waveXAxisPositionMultiplier="0.9"
+        app:waveMaxAlpha="0.5" />
 
 </LinearLayout>
