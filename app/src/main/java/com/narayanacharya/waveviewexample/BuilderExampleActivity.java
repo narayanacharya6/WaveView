@@ -29,6 +29,7 @@ public class BuilderExampleActivity extends AppCompatActivity {
                 .primaryWaveLineWidth(3f)
                 .secondaryWaveLineWidth(1f)
                 .xAxisPositionMultiplier(0.9f)
+                .maxAlpha(0.5f)
                 .build();
 
         waveView.setOnClickListener(new View.OnClickListener() {
